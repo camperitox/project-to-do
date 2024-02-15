@@ -2,9 +2,13 @@
   <div class="entry-list-container">
     <div class="entry-scrollarea">
         <Project
-            v-for="item in 10"
-            :key="item">
-            Entry
+            v-for="item in projects"
+            :key="item.id"
+            :id="item.id"
+            :nombre="item.name"
+            :descripcion="item.description"
+            >
+            
         </Project>
     </div>
   </div>
@@ -12,10 +16,25 @@
 
 <script>
 import { defineAsyncComponent } from 'vue';
-
+import services from '@/services';
 export default {
     components:{
         Project: defineAsyncComponent(() => import('@/modules/to-do/components/Project.vue'))
+    },
+    data(){
+        return {
+            projects: []
+        }
+    },
+    methods:{
+        async verDetalle() {
+            // Lógica para ver el detalle de un proceso...
+            const {data} = await services.project.getProjects();
+            this.projects = data;
+        },
+    },
+    created(){
+        this.verDetalle();
     }
 }
 </script>

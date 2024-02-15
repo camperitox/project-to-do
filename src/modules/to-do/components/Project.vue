@@ -4,9 +4,9 @@
     >
         <div class="card text-bg-light">
             <!-- Titulo -->
-            <div class="card-header bg-primary">
+            <div class="card-header">
                 <div class="entry-title d-flex">
-                    <h1 style="color: white;">Titulo del projecto</h1>
+                    <h3 style="color: white;">{{ nombre }}</h3>
                     <div class="align-left d-flex" style="color: white;">
                         <i class="fa-solid fa-star"></i>
                     </div>
@@ -15,7 +15,7 @@
             <!-- descripcion -->
             <div class="card-body">
                 <div class="entry-description">
-                    Consequat consectetur nulla qui aliqua consequat commodo esse. Qui deserunt incididunt nostrud veniam cillum aliquip enim irure exercitation reprehenderit ad. Aliqua dolore enim ullamco incididunt anim dolore incididunt. Culpa elit proident dolore eiusmod elit in esse fugiat. Laboris reprehenderit tempor qui quis. Laboris proident deserunt id occaecat ea dolore ipsum qui amet officia nostrud consequat irure aliquip. Consectetur fugiat aute irure commodo ad irure enim dolore.
+                    {{ descripcion }}
                 </div>
             </div>
         </div>
@@ -25,7 +25,22 @@
   
   <script>
   export default {
-  
+     props: {
+        id:{
+            type: Number,
+            required: true
+        },
+        nombre:{
+            type: String,
+            required: true
+        },
+        descripcion:{
+            type: String,
+        },
+        isVisible:{
+            type: Boolean,        
+        }
+    }
   }
   </script>
   
@@ -33,12 +48,13 @@
   .entry-container{
       transition: 0.2s all ease-in;
   }
-  .entry-container:hover{
-          background-color: lighten(#888d88, 10%);
-  
-}
+
   .entry-description{
       font-size: 12px;
+  }
+
+  .card-header{
+      background-color: #3b73ab;
   }
   
   </style>
