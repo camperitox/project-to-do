@@ -8,7 +8,6 @@
             :nombre="item.name"
             :descripcion="item.description"
             >
-            
         </Project>
     </div>
   </div>

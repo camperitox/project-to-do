@@ -1,6 +1,7 @@
 <template>
     <div 
       class="entry-container pointer p-2"
+      @click="$router.push({ name: 'project', params: { id: id } })"
     >
         <div class="card text-bg-light">
             <!-- Titulo -->
